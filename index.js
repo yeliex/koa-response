@@ -27,6 +27,7 @@ module.exports = function() {
       if (json) {
         // JSON Return
         str = JSON.stringify(response);
+        this.set("Content-Type","application/json");
       } else {
         // HTML Return
         if (status < 400) {
@@ -40,6 +41,7 @@ module.exports = function() {
             '</body>'
           );
         }
+        this.set("Content-Type","text/html");
       }
 
       this.set("Access-Control-Allow-Origin", "*");
