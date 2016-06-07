@@ -1,0 +1,25 @@
+{
+  "name": "koa-response",
+  "version": "1.0.0",
+  "description": "Response Middleware for koajs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yeliex/koa-response.git"
+  },
+  "keywords": [
+    "koajs",
+    "server",
+    "response",
+    "middleware"
+  ],
+  "author": "yeliex",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yeliex/koa-response/issues"
+  },
+  "homepage": "https://github.com/yeliex/koa-response#readme"
+}
