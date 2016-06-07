@@ -41,6 +41,7 @@ module.exports = function() {
           );
         }
       }
+
       this.set("Access-Control-Allow-Origin", "*");
       this.body = str;
     };
