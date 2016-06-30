@@ -14,7 +14,7 @@ $ npm install koa-response
 const app = require('koa')();
 const response = require('koa-response');
 
-app.use(response());
+app.use(response((responsed) => {console.log(responsed.method,request.body)}));
 
 app.use(function *(next){
   this.throw(200,success);
