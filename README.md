@@ -9,6 +9,11 @@ Response Middleware for koajs
 $ npm install koa-response
 ```
 
+## koa@2
+```
+$npm install koa-response@next
+```
+
 ## Usage
 ```js
 const app = require('koa')();
