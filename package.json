@@ -1,6 +1,6 @@
 {
   "name": "koa-response",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "Response Middleware for koajs",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yeliex/koa-response.git"
+  },
+  "publishConfig": {
+    "tag": "next"
   },
   "keywords": [
     "koajs",

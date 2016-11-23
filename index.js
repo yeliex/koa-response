@@ -55,6 +55,6 @@ module.exports = (callback) => {
       callback(ctx);
     };
 
-    yield next;
+    await next();
   }
 };
