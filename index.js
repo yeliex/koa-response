@@ -4,18 +4,23 @@
  * Description: Response Middleware for koajs
  */
 
-module.exports = function (callback) {
+module.exports = (callback) => {
   return function *response(next) {
-    this.throw = function (status = 404, msg, json = true) {
+    this.throw = (status = 404, msg, json = true) => {
+      if (status && isNaN(Number(status) && !msg)) {
+        json = msg;
+        msg = status;
+        status = 200;
+      }
+
       this.status = status;
 
-      var
-        str,
-        response = {
-          status,
-          error: '',
-          data: ''
-        };
+      let str;
+      const response = {
+        status,
+        error: '',
+        data: ''
+      };
 
       // JSON Return
       if (status < 400) {
