@@ -5,15 +5,15 @@
  */
 
 module.exports = (callback) => {
-  return function *response(next) {
-    this.throw = (status = 404, msg, json = true) => {
+  return async(ctx, next) => {
+    ctx.throw = (status = 404, msg, json = true) => {
       if (status && isNaN(Number(status) && !msg)) {
         json = msg;
         msg = status;
         status = 200;
       }
 
-      this.status = status;
+      ctx.status = status;
 
       let str;
       const response = {
@@ -26,13 +26,13 @@ module.exports = (callback) => {
       if (status < 400) {
         response.data = msg;
       } else {
-        response.error = msg || this.message;
+        response.error = msg || ctx.message;
       }
 
       if (json) {
         // JSON Return
         str = JSON.stringify(response);
-        this.set('Content-Type', 'application/json');
+        ctx.set('Content-Type', 'application/json');
       } else {
         // HTML Return
         if (status < 400) {
@@ -46,13 +46,13 @@ module.exports = (callback) => {
             </body>`
           );
         }
-        this.set('Content-Type', 'text/html');
+        ctx.set('Content-Type', 'text/html');
       }
 
-      this.set('Access-Control-Allow-Origin', '*');
-      this.body = str;
+      ctx.set('Access-Control-Allow-Origin', '*');
+      ctx.body = str;
 
-      callback(this);
+      callback(ctx);
     };
 
     yield next;
