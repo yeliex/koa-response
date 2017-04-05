@@ -5,7 +5,7 @@
  */
 
 module.exports = (callback) => {
-  return async(ctx, next) => {
+  return async (ctx, next) => {
     ctx.throw = (status = 404, msg, json = true) => {
       if (status && isNaN(Number(status) && !msg)) {
         json = msg;
@@ -52,7 +52,9 @@ module.exports = (callback) => {
       ctx.set('Access-Control-Allow-Origin', '*');
       ctx.body = str;
 
-      callback(ctx);
+      if (typeof callback === 'function') {
+        callback(ctx);
+      }
     };
 
     await next();
