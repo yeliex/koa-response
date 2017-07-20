@@ -1,6 +1,6 @@
 {
   "name": "koa-response",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "Response Middleware for koajs",
   "main": "index.js",
   "scripts": {
