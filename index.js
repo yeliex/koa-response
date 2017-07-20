@@ -4,7 +4,7 @@
  * Description: Response Middleware for koajs
  */
 
-module.exports = (callback) => {
+module.exports = (callback, cors = true) => {
   return async (ctx, next) => {
     ctx.throw = (status = 404, msg, json = true) => {
       if (status && isNaN(Number(status) && !msg)) {
@@ -49,7 +49,16 @@ module.exports = (callback) => {
         ctx.set('Content-Type', 'text/html');
       }
 
-      ctx.set('Access-Control-Allow-Origin', '*');
+      if (cors) {
+        ctx.set({
+          'Access-Control-Allow-Origin': ctx.get('origin') || '*',
+          'Access-Control-Allow-Credentials': 'true',
+          'Access-Control-Allow-Methods': ctx.get('Access-Control-Request-Method') || 'GET,POST,HEAD,DELETE,PUT,OPTIONS',
+          'Access-Control-Allow-Headers': ctx.get('Access-Control-Request-Headers') || '*',
+          'Access-Control-Max-Age': '86400'
+        })
+      }
+
       ctx.body = str;
 
       if (typeof callback === 'function') {
