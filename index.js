@@ -7,10 +7,13 @@
 module.exports = (callback, cors = true) => {
   return async (ctx, next) => {
     ctx.throw = (status = 404, msg, json = true) => {
-      if (status && isNaN(Number(status) && !msg)) {
+      if (status && isNaN(Number(status)) && !msg) {
         json = msg;
         msg = status;
         status = 200;
+      } else if (isNaN(Number(status))) {
+        status = 500;
+        msg = (msg.data || {}).message || msg.message || msg.error || msg.msg || msg.code || msg;
       }
 
       ctx.status = status;
