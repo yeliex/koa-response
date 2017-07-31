@@ -35,7 +35,7 @@ module.exports = (callback, cors = true) => {
       if (json) {
         // JSON Return
         str = JSON.stringify(response);
-        ctx.set('Content-Type', 'application/json');
+        ctx.set('Content-Type', ctx.get('Content-Type') || 'application/json;;charset=utf8');
       } else {
         // HTML Return
         if (status < 400) {
