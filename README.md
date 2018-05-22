@@ -1,5 +1,7 @@
 # koa-response
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/yeliex/koa-response.svg)](https://greenkeeper.io/)
+
 Response Middleware for koajs
 
 [![npm](https://img.shields.io/npm/v/koa-response.svg?style=flat-square)](https://www.npmjs.com/package/koa-response)
